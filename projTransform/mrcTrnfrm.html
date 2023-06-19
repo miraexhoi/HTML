@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*idDiv 너비:30vw 높이: 30vw 배경색: lightgreen*/
+        #idDiv {
+            width: 20vw;
+            height:20vw;
+            background-color: lightgreen;
+            transition: 3s;
+        }
+    </style>
+    <script>
+        // function mOk(pVal){
+        //     let lObj = document.getElementById("idDiv");
+        //     if(pVal=="move")
+        //     {
+        //         lObj.style.transform = `translate(30px, 50px)`;
+        //     }
+        // }
+        // 기존방법
+
+        const mOk= (pVal)=>{
+            // idDiv를 (30px, 50px) 만큼 이동
+            let lObj = document.getElementById("idDiv");
+            if(pVal=="move")
+            {
+                lObj.style.transform = `translate(30px, 50px)`;
+            }
+            //rotate 60도 회전
+            else if(pVal=="rotate")
+            {
+                lObj.style.transform = `rotate(60deg)`;
+            }
+            else if(pVal=="scale")
+            {
+                lObj.style.transform = `scale(1.5, 2)`;
+            }
+            else if(pVal=="skewX")
+            {
+                lObj.style.transform = `skewX(20deg)`;
+            }
+            else if(pVal=="skewY")
+            {
+                lObj.style.transform = `skewY(30deg)`;
+            }
+            else if(pVal=="reset")
+            {
+                alert('dddd');
+                lObj.style.transform = `translate(0.0)`;
+            }
+        };
+
+    </script>
+</head>
+<body>
+    <button onclick="mOk('move')">translate</button>
+    <button onclick="mOk('rotate')">rotate</button>
+    <button onclick="mOk('scale')">scale</button>
+    <button onclick="mOk('skewX')">skewX</button>
+    <button onclick="mOk('skewY')">skewY</button>
+    <button onclick="mOk('reset')">reset</button>
+
+    <div id="idPrint" style="width:80vw; height:80vh; padding:50px; border:1px solid red";>
+        <div id="idDiv">
+
+        </div>  
+    </div>
+</body>
+</html>

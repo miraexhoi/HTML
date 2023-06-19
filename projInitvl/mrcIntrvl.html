@@ -1,0 +1,60 @@
+<html>
+<head>
+    <script>
+        var idIntrvl=0; //전역변수로 세팅해야함
+        var vInc=-2; //
+        function mOk(pGbn){
+            lBtn = document.getElementById("idBtn");
+            if(lBtn.textContent=="start")
+            {
+                lBtn.textContent="stop";
+                idIntrvl = setInterval(mIntrvl,100);
+                lChld = document.getElementById('idChld');
+                lChld.style.left="0%";
+                lChld.style.top="0%";
+                function mIntrvl(){
+                    let lLeft=Number(lChld.style.left.substring(0,lChld.style.left.length-1));
+                    let lTop=Number(lChld.style.top.substring(0,lChld.style.top.length-1));
+                    let linc=2;
+                    // lLeft=(lLeft+2)%52;
+                    // lTop=(lTop+2)%52;
+                    if(lLeft==0 || lLeft==50){
+                        vInc=vInc*(-1);
+                    }
+                    lLeft=lLeft+vInc;
+                    lTop=lTop+vInc;
+                    lChld.style.left=lLeft + "%";
+                    lChld.style.top=lTop + "%";
+                }
+            }
+            else
+            {
+                lBtn.textContent="start";
+            }
+        }
+           
+    </script>
+    <style>
+        #idPrnt {
+            width: 80vw;
+            height: 80vh;
+            background-color: hsla(60,100%,50%,1);
+            position: relative;
+        }
+        #idChld {
+            width: 50px;
+            height: 50px;
+            background-color: hsla(0,100%,50%,1);
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <button id="idBtn" onclick="mOk()"> start </button>
+    <div id="idPrnt">
+        <div id="idChld">
+
+        </div>
+    </div>
+</body>
+</html>

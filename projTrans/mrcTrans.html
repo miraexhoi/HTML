@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* div 태그
+        1. 너비: 30vw
+        2. 높이: 30vh
+        3. 배경색: hsla 방법으로 초록색 */
+
+        div {
+            width: 30vw;
+            height: 10vh;
+            transition: width 4s;
+            margin:10px;
+        }
+
+        /* div:hover {
+            width: 60vw;
+            height: 60vh;
+            background-color: rgb(103, 158, 108);
+        } */
+
+        #idDiv1{
+            background-color: hsla(0,100%,50%,0.4);
+
+            transition-timing-function: ease;
+        }
+        #idDiv2{
+            background-color:  hsla(40,100%,50%,0.4);
+            transition-timing-function: linear;
+        }
+        #idDiv3{
+            background-color:  hsla(60,100%,50%,0.4);
+
+            transition-timing-function: ease-in;
+        }
+        #idDiv4{
+            background-color:  hsla(120,100%,50%,0.4);
+            transition-timing-function: ease-out;
+        }
+        #idDiv5{
+            background-color:  hsla(240,100%,50%,0.4);
+            transition-timing-function: ease-in-out;
+        }
+
+        /* div:hover{
+            width:80vw;
+        } */
+
+    </style>
+    <script>
+        function mOk(){
+            // 변신50:50vw -> 변신100:100vw -> 초기화:30vw 글자가 번갈아 나오도록 한다.
+            let txtBtn = document.getElementById('idBtn');
+            let lWidth;
+
+            if (txtBtn.textContent == "변신")
+            {
+                textBtn.textContent = "초기화";
+                lWidth="80vw";
+            }            
+            else // 초기화인 경우 
+            {
+                txtBtn.textContent="변신";
+                lWidth="30vw";
+            }
+            // ?? 나머지 과정 ??
+
+            // 초기화 눌렀을 때, 쟝소="30vw"도 한다.
+
+            let arrDiv = document.querySelectorAll('div');
+            // alert(arrDiv.length);
+            arrDiv.forEach((pVal,pIdx,pArr)=>{
+                pVal.style.width=lWidth;
+            });
+        }
+    </script>
+</head>
+<body>
+    <button id="idBtn" onclick="mOk();">변신</button>
+    <div id="idDiv1">
+        ease
+    </div>
+
+    <div id="idDiv2">
+        linear
+    </div>
+
+    <div id="idDiv3">
+        ease-in
+    </div>
+
+    <div id="idDiv4">
+        ease-out
+    </div>
+    <div id="idDiv5">
+        ease-in-out
+    </div>
+</body>
+</html>

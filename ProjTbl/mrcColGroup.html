@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, td {
+            border: 1px solid black;
+        }
+        th {
+            background-color: darkgray;
+            font-weight: bolder;
+            color:whitesmoke;
+            height: 80px;
+            vertical-align: top;
+        }
+        td {
+            height: 50px;
+            vertical-align: bottom;
+        }
+        .clsCenter {
+            text-align: center;
+        }
+        .clsRight {
+            text-align: right;
+        }
+
+    </style>
+</head>
+<body>
+    <table>
+        
+        <colgroup>
+            <col span="1" style="width:20%; background-color: rosybrown;">
+            <col span="1" style="width:40%; background-color: antiquewhite;">
+            <col span="1" style="width:40%; background-color: antiquewhite;">
+        </colgroup>
+
+        <tr>
+            <th>
+                ISBN
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Price
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                12345678
+            </td>
+            <td class="clsCenter">
+                톰소년의 모험
+            </td>
+            <td class="clsRight">
+                $53
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                777886767
+            </td>
+            <td class="clsCenter">
+                해리포터
+            </td>
+            <td class="clsRight">
+                $120
+            </td>
+        </tr>
+        </tr>
+    </table>
+</body>
+</html>

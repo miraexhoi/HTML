@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 1. 부모영역: 너비 80vw 높이 80vh 배경색 hsla 사용해서 옅은 파랑색으로
+        2. 너비 60px 높이 60px 배경색 hsla 사용해서 붉은색으로*/
+        #idPrnt {
+            width: 80vw;
+            height: 80vh;
+            background-color: hsla(200, 100%, 80%);
+            position: relative;
+            padding: 50px; /*얼마나 띄울것인지*/
+        }
+        #idChld {
+            width: 60px;
+            height:60px;
+            background-color: hsla(0, 100%, 50%,1);
+            animation-duration: 4s;
+        }
+        @keyframes aniColor{
+            from {background-color: hsla(0,100,50%,1); width:60px; height:60px;}
+            to {background-color: hsla(240,100%,50%,1); width:60px; height:150px;}
+        }
+        /*진행이 몇프로 되었을때 효과를 넣을지*/
+        @keyframes aniColor5{
+            20% {background-color: hsla(60,100%,50%,1); width:60px; height:60px; left:50px; top:50%;}
+            40% {background-color: hsla(120,100%,50%,1); width:60px; height:60px; left:40px; top:40%;}
+            60% {background-color: hsla(180,100%,50%,1); width:60px; height:60px; left:60px; top:60%;}
+            80% {background-color: hsla(240,100%,50%,1); width:60px; height:60px; left:80px; top:80%;}
+            100% {background-color: hsla(240,100%,50%,1); width:60px; height:60px; left:100px; top:100%;}
+        }
+        /* 버튼 color5 추가하고 버튼 클릭하면 anicolor5 5초동안 실행되도록 한다. */
+    </style>
+    <script>
+        function mOk(pGbn) {
+            let lChld = document.getElementById("idChld");
+            if(pGbn=="color")
+                lChld.style.animation="aniColor 4s forwards"; // +3 = 3번 반복
+            else if(pGbn=="color5")
+                lChld.style.animation="aniColor5 5s forwards infinite alternate"; // +infinte = 무한반복
+            else if(pGbn=="rel")
+                lChld.style.animation="aniColor5 5s forwards";
+            else if(pGbn=="abs")
+            {
+                lChld.style.position='relative';
+                lChld.style.animation="aniColor5 5s forwards";
+            }
+            else if(pGbn=="reset")
+                lChld.style.animation="none";
+        }
+    </script>
+</head>
+<body>
+    <button onclick="mOk('color')"> color </button>
+    <button onclick="mOk('color5')"> color5 </button>
+    <button onclick="mOk('reset')"> reset </button>
+    <button onclick="mOk('rel')"> relative </button>
+    <button onclick="mOk('abs')"> absolute </button>
+
+    <div>div1</div>
+    <div>div2</div>
+    <div>div3</div>
+    <div>div4</div>
+    <div>div5</div>
+
+
+
+    <div id="idPrnt"> 
+        <div id="idChld">
+            
+        </div>
+    </div>
+</body>
+</html>

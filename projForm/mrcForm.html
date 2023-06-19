@@ -1,0 +1,144 @@
+<html>
+    <head>
+        <script>
+            function mChk()
+            {
+                var lFm= document.fm;
+                var lgrd = lFm.grd;
+                var lcls=document.fm.cls;
+                var lnum=document.getElementById("idNum");
+                var lgbn1=document.fm.gbn1;
+                var lgbn2=document.fm.gbn2;
+                var lAccess=lFm.accessKey;
+
+                    if(lgrd.value==0)
+                    {
+                        /* 번호 정합성 체크 */
+                        alert("학년을 선택해 주세요.");
+                        lgrd.focus();
+                        return false;
+                    }
+                    /* accesskey: 숫자형, 길이(length)가 4 여야 함. */
+                    else if(lnum.value==''|| isNaN(lnum.value))
+                    {
+                        /* 번호 정합성 체크 */
+                        alert("번호을 재대로 입력해 주세요.");
+                        lnum.select();
+                        return false;
+                    }
+                    else if(lAccess.value.length != 4 || isNaN(lAccess.value))
+                    {
+                        window.alert("Access key를 바로게 입력해 주세요.")
+                        lAccess.select();
+                        return false;
+                        /* 구분자 1: html, 구분자2: vldt */
+                    }
+                    else
+                        lFm.submit(); // 드디어 서버로 전송
+               
+            }
+        </script>
+        <style>
+            h1{
+                color :blue;
+                text-align: center;
+            }
+
+            #idgrd{background-color: yellow;}
+            #idcls{background-color: yellow;}
+            #idnum{background-color: yellow;}
+            #idnm{background-color:yellow;}
+            
+            div { 
+                margin: 10px;font-weight: bold;
+            }
+
+            input {
+                background-color: yellow;
+                
+            }
+
+            .cls1 {
+                color :darkgreen;
+            }
+
+            * {font-weight: bold;}
+
+            .clsLbl {
+                color:green;
+                font-weight: bold;
+                display:inline-block;
+                width: 14%;
+                text-align: right;
+                margin-left: 20%;
+            }
+
+        </style>
+        
+    </head>
+    <body>
+        <h1> let's go</h1>
+        <form name="fm"
+        method ="post" 
+        action="http://arabbit.link/dirSw/insrtHstry.php" onsubmit ="return false;"> 
+
+            <div>
+            <label class="clsLbl" for="idGrd">학년 :</label> <!-- start -->
+            
+            <select name ="grd" class ="cls1">
+                <option value="0"selected>학년을 고르시오.</option>
+                <option value="1">1학년</option>
+                <option value="2" >2학년</option>
+                <option value="3">3학년</option>
+            </select>
+            <!--
+            <input id = "idGrd"type="text" name="grd" placeholder="학년">
+            -->
+            </div>
+
+            </div>
+                <label class="clsLbl" for="idGrd">반 :</label>
+                <label for="idCls1">1반:</label> 
+                <input id = "idCls1"type="radio" value = "1" name="cls" >
+
+                <label for="idCls2">2반:</label> 
+                <input id = "idCls2"type="radio" value = "2" name="cls" >
+    
+                <label for="idCls3">3반:</label> 
+                <input id = "idCls3"type="radio" value = "3" name="cls" >
+    
+                <label for="idCls4">4반:</label> 
+                <input id = "idCls4"type="radio" value = "4" name="cls" >  <!--end-->
+            </div>
+
+            <div>
+            <label class="clsLbl" for="idNum">번호 :</label>
+            <input id = "idNum"type="text" name="num" placeholder="번호">
+            </div>
+            
+            <div>
+                <label class="clsLbl" for="idNm">이름 :</label>
+                <input id = "idNm"type="text" name="nm" placeholder="이름">
+            </div>
+
+            <div>
+                <label class="clsLbl" for="idgbn1">비번1 :</label> <!-- html -->
+                <input id = "idgbn1"type="text" name="gbn1" placeholder="구분1?">
+            </div>
+            
+            <div>
+                <label class="clsLbl" for="idgbn2">비번2 :</label> <!-- form -->
+                <input id = "idgbn2"type="text" name="gbn2" placeholder="구분2?">
+            </div>
+            
+            <div>
+                <label class="clsLbl" for="idAccessKey">accessKey :</label> <!-- 3521 -->
+                <input id = "idAccesskey"type="text" name="accessKey" placeholder="accessKey">
+            </div>
+
+            <div style="text-align: center;">
+                <input type="submit" value="제출" onclick="mChk()">
+            </div>
+        </form>
+    </body>
+</html>
