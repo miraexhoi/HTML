@@ -7,22 +7,27 @@
     <title>Document</title>
     <!-- 11차시 -->
     <style>
-            /* 
+        /* 
               css:부모영역(clsPrnt):
               1. 너비:98vw, 높이:70vh, 
               2. position: 자식이 absolute 설정가능하도록 함
                            단, 자신의 영역을 차지하여야 함.
               3. 바깥여백: (위,아래):화면기준 1%, (좌,우):auto
               4. 배경색: hsla( ,  %,  %, 0.6) 옅은 초록색  
-            */
-            .clsPrnt{
-                width: 98vw;
-                height:70vh;
-                position: relative;
-                margin: 1vh auto;
-                background-color:hsla(100, 100%, 80%, 0.6);
-            }
-            /* 
+         */
+        #idPrnt{
+            width: 100vw;
+            height: 70vh;
+            background-color: hsla(84, 100%, 59%, 1);
+        }
+        #idPageSlct{
+            width: 100vw;
+            height: 5vh;
+            text-align: center;
+            /* background-color: hsla(60, 100%, 50% , 1); */
+            margin: 0.8vh 0vh;
+        }
+        /* 
             css :1. 둥근 모양(클래스:clsDot) 구현 
             1.1 커서모양: 손가락 hint) cursor: ?
             1.2 display속성: 라인변경없이 width, height 적용될 수 있도록 설정
@@ -31,119 +36,130 @@
             1.5 변환:0.6초 동안 ease 함수 적용하여 변화되도록 설정
             1.6 여백: (위,아래: 0.5%(화면높이대비), 좌,우: 1.2%(화면너비대비))
             1.7 배경색: #bbb 
-            */
-            .clsDot{
-                cursor:pointer;
-                display: inline-block;
-                height: 3vh;
-                width: 3vh;
-                border-radius: 50%;
-                transition: 0.6s ease;
-                margin: 0.5vh 1.2vw;
-                background-color: #bbb;
-            }
-
-            /* 슬라이드(클래스명: clsSlde):
-              1. 너비:부모영역전체, 높이:부모영역전체 
-              2. position: 자식이 absolute 설정가능면서 본문에서 영역 차지함. */
-            .clsSlde{
-                width:100%;
-                height:100%;
-                position:relative;
-            }
-
-            .clsFade{
-                display:none;
-            }
-
-            .clsSlde img{
-                width: 100%;
-                height: 100%;
-            }
-
-            /* 클래스(이름:clsPageTxt)
+        */
+        .clsDot{
+            display: inline-block;
+            width: 5vw;
+            height: 5vw;
+            background-color: hsla(0, 2%, 60%, 1);
+            border-radius: 50%;
+            margin: 0vw 0.8vw;
+            cursor: pointer;
+        }
+        /*  
+            슬라이드(클래스명: clsSlde):
+            1. 너비:부모영역전체, 높이:부모영역전체 
+            2. position: 자식이 absolute 설정가능면서 본문에서 영역 차지함. 
+        */
+        .clsSlde{
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .clsSlde img{
+            width: 100%;
+            height: 100%;
+        }
+        .clsTxtPage{
+            position: absolute;
+            top: 0.8vh;
+            left: 0.8vh;
+            font-size: 2vh;
+            color:hsla(0,1%,80%,1);
+        }
+              /* 클래스(이름:clsPageTxt)
               1. 포지션: 부모영역내에서 자유롭게 위치하면서 영역 차지 않게 배치 == absolute
               2. 위치: left:2px, top:2px
               3. 글자색: #eee
               4. 글자크기: 화면너비 3%
-              5. 글자굵기: 굵게 */
-            .clsPageTxt{
+              5. 글자굵기: 굵게
+              .clsPageTxt{
                 position: absolute;
                 left: 2px;
                 top: 2px;
                 color: #eee;
                 font-size: 3vw;
                 font-weight: blod;
-            }
-            /* 클래스(이름:clsCptn)
-              3. 포지션: 부모영역내에서 자유롭게 위치하면서 영역 차지 않게 배치
-              4. 위치: 부모영역 하단에서 2px 떨어지게
-              5. 너비: 부모영역 모두 차지
-              6. 글자가로정렬: 가운데 == text-align: center;
-              7. 글자색: #eee
-              8. 글자크기: 화면 너비 3%
-              9. 글자굵기: 굵게 */
+            } */
+        /* 
+          클래스(이름:clsCptn)
+          3. 포지션: 부모영역내에서 자유롭게 위치하면서 영역 차지 않게 배치
+          4. 위치: 부모영역 하단에서 2px 떨어지게
+          5. 너비: 부모영역 모두 차지
+          6. 글자가로정렬: 가운데 == text-align: center;
+          7. 글자색: #eee
+          8. 글자크기: 화면 너비 3%
+          9. 글자굵기: 굵게 
+        */
+        .clsCptn{
+            position: absolute;
+            font-size: 2vh;
+            color: hsla(0,1%,80%,1);
+            width: 100%;
+            text-align: center;
+            bottom: 0.8vh;
+        }
 
-              .clsCptn{
-                position: absolute;
-                bottom: 2px;
-                width: 100%;
-                text-align: center;
-                color: #eee;
-                font-size: 3vw;
-                font-weight: bold;
-              }
-        
+
     </style>
     <script>
         /*
-        mCurrent(pSlide) 구현
+            mCurrent(pSlide) 구현
             1.  블럭변수 arrSlides 설정후, 클래스이름 “clsSlde” 항목을 모두 넣어준다.
             (querySelectorAll 함수 이용한다.)
             2. arrSlides 를 모두 보이지 않게 한다.
             3. 해당 슬라이드만 보이게 처리한다.
         */
-       function mCurrent(pSlide){
-        let arrSlides = document.querySelectorAll("./clsSlde"); // 여러개 가져올떈 all
-        for(let i = 0; i < arrSlides.length; i++){
-            arrSlides[i].style.display=none;
+        var gSldNum;
+        function mCurrent(pPage){
+            //alert(pPage);
+            let arrslides = document.querySelectorAll(".clsSlde") //수행때 나옴 
+            for(let i=0; i<arrslides.length; i++){
+                arrslides[i].style.display="none";
+            }
+            arrslides[pPage-1].style.display="block";
         }
-        arrSlides[pSlide-1].style.display=block;
-       }
-
-       window.onload=function(){
-        mCurrent(2);
-       }
+        window.onload=function(){ // 수행 혹 나올수도 
+            gSldNum = 1;
+            mCurrent(gSldNum);
+        }
     </script>
 </head>
 <body>
-    <div class="clsPrnt">
-        <div class="clsPageTxt">
-            <div class="clsPageTxt">1/3</div>
+    <!-- 
+        1. div 태그 추가(클래스:clsSlde, clsFade)
+        가.자식항목 : div 태그 추가(클래스: clsPageTxt, 내용: 1/3 )
+        나. 자식항목: img 태그 추가(src: arabbit.link/images/aurora.jpg
+        다. 자식항목: div 태그 추가(클래스:clsCptn, 내용: aurora) 
+    -->
+    <div id="idPrnt">
+        <div class="clsSlde">
+            <div class="clsTxtPage">
+                1/3
+            </div>
             <img src="http://arabbit.link/images/aurora.jpg">
-            <div class="clsCptn">aurora</div>
+            <div class="clsCptn"> aurora </div>
         </div>
-        <div class="clsPageTxt">
-            <div class="clsPageTxt">2/3</div>
+        <div class="clsSlde">
+            <div class="clsTxtPage">
+                2/3
+            </div>
             <img src="http://arabbit.link/images/canyon.jpg">
-            <div class="clsCptn">canyon</div>
+            <div class="clsCptn"> canyon </div>
         </div>
-        <div class="clsPageTxt">
-            <div class="clsPageTxt">3/3</div>
+        <div class="clsSlde">
+            <div class="clsTxtPage">
+                3/3
+            </div>
             <img src="http://arabbit.link/images/mountain.jpg">
-            <div class="clsCptn">mountain</div>
+            <div class="clsCptn"> mountain </div>
         </div>
     </div>
-    <!-- 1. div 태그 추가(클래스:clsSlde, clsFade)
-    가.자식항목 : div 태그 추가(클래스: clsPageTxt, 내용: 1/3 )
-    나. 자식항목: img 태그 추가(src: arabbit.link/images/aurora.jpg
-    다. 자식항목: div 태그 추가(클래스:clsCptn, 내용: aurora) -->
-    <br>
-    <div style="text-align: center;">
-        <span class="clsDot" onclick="mCurrent(1);"></span>
-        <span class="clsDot" onclick="mCurrent(2);"></span>
-        <span class="clsDot" onclick="mCurrent(3);"></span>
+    <div id="idPageSlct">
+
+        <span class="clsDot" onclick="mCurrent('1')">  </span>
+        <span class="clsDot" onclick="mCurrent('2')">  </span>
+        <span class="clsDot" onclick="mCurrent('3')">  </span>
     </div>
 </body>
 </html>
-
