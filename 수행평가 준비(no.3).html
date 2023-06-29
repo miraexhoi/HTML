@@ -1,52 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1306-최미래</title>
     <style>
         #idPrnt {
-            width: 95vw;
-            height: 70vh;
-            position: absolute auto;
-            margin: 1vw auto;
+           position: relative;
+           width: 98vw;
+           height: 70vh;
+           margin: 1vw auto;
         }
-        #idDivPgSlct {
-            text-align: center;
+  
+        .clsSlde{
+           position: relative;
+           width:100%;
+           height:100%;
         }
-        .clsDot {
-            cursor: pointer;
-            display: inline-block;
-            height: 3vh;
-            width: 3vw;
-            border-radius: 50%;
-            margin: 0.5vh 1.2vw;
-            background-color: #bbb;
+        
+        .clsSlde img{
+           width:100%;
+           height: 100%;
         }
-        .clsSlde {
-            
+  
+        .clsCptn{
+          position:absolute;
+          width:100%;
+          text-align: center;
+          bottom:2px; 
+          color:#eee;
+          font-size: 3vw;
         }
-    </style>
-</head>
-<body>
-    <div id="idPrnt">
-        <div class="clsSlde">
-            <img src: http://arabbit.link/images/aurora.jpg>
-        </div>
-        <div clss="clsCptn">
-            aurora
-        </div>
-        <div class="clsSlde">
-            <img src: http://arabbit.link/images/canyon.jpg>
-        </div>
-        <div clss="clsCptn">
-            canyon
-        </div>
-        <br>
-        <div id="idDivPgSlct">
-            <span class="clsDot"></span>
-            <span class="clsDot"></span>
-        </div>
-    </div>
-</body>
-</html>
+  
+        #idDivPgSlct{
+           /*width:100%;*/
+           text-align: center;
+        }
+  
+        .clsDot{
+           display:inline-block;
+           margin: 0.5vh 1.2vw;
+           width: 3vh;
+           height: 3vh;
+           cursor:pointer;
+           background-color: #bbb;
+           border-radius: 50%;
+        }
+  
+     </style>
+  
+     <script>
+        function mCurrent(pSldeNum)
+        {
+            let arrSldes=document.querySelectorAll('.clsSlde');
+            for(let i=0; i<arrSldes.length ; i++)
+            {
+              arrSldes[i].style.display="none";
+            }
+            arrSldes[pSldeNum-1].style.display="block";
+        }
+  
+        window.onload=function(){
+             mCurrent(2);
+        }
+     </script>
+  
+  </head>
+  <body>
+    
+  <div id="idPrnt">
+  
+     <div class="clsSlde">
+         <img src="http://arabbit.link/images/aurora.jpg">
+         <div class="clsCptn">
+              aurora
+         </div>
+     </div>
+     
+     <div class="clsSlde">
+          <img src="http://arabbit.link/images/canyon.jpg">
+          <div class="clsCptn">
+              canyon
+          </div>
+      </div>
+  
+  </div>   
+  <br>
+  <div id="idDivPgSlct">
+      <span class="clsDot" onclick="mCurrent('1');"></span>
+      <span class="clsDot" onclick="mCurrent('2');"></span>
+  </div>
+  
+  </body>
